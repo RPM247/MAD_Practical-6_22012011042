@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Animation.AnimationListener {
     lateinit var clockAnimation: AnimationDrawable
-
+    lateinit var heartAnimation: AnimationDrawable
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,29 +22,29 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val imgview = findViewById<ImageView>(R.id.img1)
-        imgview.setBackgroundResource(R.drawable.clock_animation_list)
-        clockAnimation = imgview.background as AnimationDrawable
     }
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus) {
+            clockAnimation = findViewById<ImageView>(R.id.img1).background as AnimationDrawable
+            heartAnimation = findViewById<ImageView>(R.id.img2).background as AnimationDrawable
             clockAnimation.start()
-            //findViewById<ImageView>(R.id.uvpce_imageview).startAnimation(tweenAnimation)
+            heartAnimation.start()
         } else {
             clockAnimation.stop()
+            heartAnimation.stop()
         }
     }
 
-    fun onAnimationStart(p0: Animation?) {
+    override fun onAnimationStart(p0: Animation?) {
 
     }
 
-    fun onAnimationEnd(p0: Animation?) {
-        Intent(this, MainActivity::class.java).also{startActivity(it)}
+    override fun onAnimationEnd(p0: Animation?) {
+
     }
 
-    fun onAnimationRepeat(p0: Animation?) {
+    override fun onAnimationRepeat(p0: Animation?) {
 
     }
 }
