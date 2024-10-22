@@ -38,7 +38,7 @@
                 android:scaleType="centerCrop"
                 android:id="@+id/img1"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/clock_animation_list"/>
+                android:background="@drawable/clock_animation_list"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
